@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TiendaWeb.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Buy", "Carrito", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FotoID)
+            </th>
+            <th>
+                Foto
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad, new { htmlAttributes = new {@class = "form-control", max = item.maxAlmacen, min = 1} })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FotoID)
+                </td>
+                <td>
+                    <img src="~/Content/Images/@item.FotoID" width="150" height="150" />
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <input type="submit" value="Buy" />
+}
+<table>
+    <tr>
+        <td>
+            @using (Html.BeginForm("EmptyCart", "Carrito", FormMethod.Post))
+            {
+                <input type="submit" value="Empty Cart" />
+            }
+        </td>
+    </tr>
+</table>

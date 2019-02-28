@@ -33,7 +33,7 @@ namespace TiendaWeb.Controllers
                 return View();
             }
         }
-
+        [Authorize]
         // POST: Carrito/Buy
         public ActionResult Buy(CarritoCompra cc)
         {
@@ -57,7 +57,8 @@ namespace TiendaWeb.Controllers
                     pedido.Producto = db.Productos.Find(p.Id);
                     db.Pedidos.Add(pedido);
                 }
-                factura.ClienteID = "juan";
+                factura.ClienteID = User.Identity.Name;
+                //factura.ClienteID = "pepe";
                 factura.Importe = precio;
                 db.Facturas.Add(factura);
                 db.SaveChanges();

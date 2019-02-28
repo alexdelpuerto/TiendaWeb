@@ -18,7 +18,6 @@ namespace TiendaWeb.Controllers
         public ActionResult Index()
         {
             List<Producto> listProductos = new List<Producto>();
-            
                 foreach (Producto p in db.Productos)
                 {
                     if (db.Productos.Find(p.Id).Cantidad > 0)

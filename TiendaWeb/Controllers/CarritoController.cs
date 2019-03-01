@@ -33,8 +33,9 @@ namespace TiendaWeb.Controllers
                 return View();
             }
         }
-        [Authorize]
+
         // POST: Carrito/Buy
+        [Authorize]
         public ActionResult Buy(CarritoCompra cc)
         {
             decimal precio = 0;

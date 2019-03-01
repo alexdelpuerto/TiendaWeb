@@ -38,7 +38,7 @@ namespace TiendaWeb.Controllers
         public ActionResult Buy(CarritoCompra cc)
         {
             decimal precio = 0;
-            int cantidad;
+            int cantidad = 0;
 
             if (cc.Count > 0)
             {
@@ -56,9 +56,15 @@ namespace TiendaWeb.Controllers
                     pedido.Factura = factura;
                     pedido.Producto = db.Productos.Find(p.Id);
                     db.Pedidos.Add(pedido);
+
+                    if (db.Productos.Find(p.Id).Cantidad < 2)
+                    {
+                        Stock stock = new Stock();
+                        stock.Producto = db.Productos.Find(p.Id);
+                        db.Stock.Add(stock);
+                    }
                 }
                 factura.ClienteID = User.Identity.Name;
-                //factura.ClienteID = "pepe";
                 factura.Importe = precio;
                 db.Facturas.Add(factura);
                 db.SaveChanges();

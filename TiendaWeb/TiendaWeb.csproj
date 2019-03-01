@@ -213,6 +213,9 @@
     </Compile>
     <Compile Include="Models\ProductoPartial.cs" />
     <Compile Include="Models\Sesion\CarritoCompra.cs" />
+    <Compile Include="Models\Stock.cs">
+      <DependentUpon>ModeloTiendaWeb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

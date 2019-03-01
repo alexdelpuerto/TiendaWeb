@@ -145,9 +145,12 @@ namespace TiendaWeb.Controllers
             }
             else
             {
-                cc.Remove(prodCart);
-                producto.Cantidad = prodCart.Cantidad+1;
-                cc.Add(producto);
+                if (producto.maxAlmacen - prodCart.Cantidad - 1 >= 0)
+                {
+                    cc.Remove(prodCart);
+                    producto.Cantidad = prodCart.Cantidad + 1;
+                    cc.Add(producto);
+                }
             }
             return RedirectToAction("Index");
         }

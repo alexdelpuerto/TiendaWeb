@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using TiendaWeb.Models;
 using TiendaWeb.Models.Sesion;
+using System.Windows.Forms;
 
 namespace TiendaWeb.Controllers
 {
@@ -20,7 +21,7 @@ namespace TiendaWeb.Controllers
         }
 
         // POST: Carrito/Delete/5
-        public ActionResult Delete(int id, FormCollection collection, CarritoCompra cc)
+        public ActionResult Delete(int id, CarritoCompra cc)
         {
             try
             {
@@ -35,10 +36,11 @@ namespace TiendaWeb.Controllers
         }
 
         // POST: Carrito/Buy
+        [Authorize]
         public ActionResult Buy(CarritoCompra cc)
         {
             decimal precio = 0;
-            int cantidad;
+            int cantidad = 0;
 
             if (cc.Count > 0)
             {
@@ -56,11 +58,19 @@ namespace TiendaWeb.Controllers
                     pedido.Factura = factura;
                     pedido.Producto = db.Productos.Find(p.Id);
                     db.Pedidos.Add(pedido);
+
+                    if (db.Productos.Find(p.Id).Cantidad < 2)
+                    {
+                        Stock stock = new Stock();
+                        stock.Producto = db.Productos.Find(p.Id);
+                        db.Stock.Add(stock);
+                    }
                 }
-                factura.ClienteID = "juan";
+                factura.ClienteID = User.Identity.Name;
                 factura.Importe = precio;
                 db.Facturas.Add(factura);
                 db.SaveChanges();
+                MessageBox.Show("Accepted purchase");
             }
             return RedirectToAction("EmptyCart");
         }

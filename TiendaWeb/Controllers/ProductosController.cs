@@ -28,21 +28,6 @@ namespace TiendaWeb.Controllers
             return View(listProductos);
         }
 
-        // GET: Productos/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Producto producto = db.Productos.Find(id);
-            if (producto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(producto);
-        }
-
         // GET: Productos/AddCart/5
         public ActionResult AddCart(int? id, CarritoCompra cc)
         {

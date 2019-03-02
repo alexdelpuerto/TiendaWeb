@@ -7,6 +7,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using TiendaWeb.Models.Binders;
 using TiendaWeb.Models.Sesion;
+using System.Web.Http;
+using System.Web.Routing;
 
 namespace TiendaWeb
 {
@@ -14,6 +16,8 @@ namespace TiendaWeb
     {
         protected void Application_Start()
         {
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

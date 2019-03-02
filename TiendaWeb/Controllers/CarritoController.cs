@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using TiendaWeb.Models;
 using TiendaWeb.Models.Sesion;
+using System.Windows.Forms;
 
 namespace TiendaWeb.Controllers
 {
@@ -20,7 +21,7 @@ namespace TiendaWeb.Controllers
         }
 
         // POST: Carrito/Delete/5
-        public ActionResult Delete(int id, FormCollection collection, CarritoCompra cc)
+        public ActionResult Delete(int id, CarritoCompra cc)
         {
             try
             {
@@ -69,6 +70,7 @@ namespace TiendaWeb.Controllers
                 factura.Importe = precio;
                 db.Facturas.Add(factura);
                 db.SaveChanges();
+                MessageBox.Show("Accepted purchase");
             }
             return RedirectToAction("EmptyCart");
         }

@@ -190,12 +190,14 @@
     <Compile Include="Controllers\API\FacturasAPIController.cs" />
     <Compile Include="Controllers\API\StockAPIController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\FacturasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\API\ProductosAPIController.cs" />
     <Compile Include="Controllers\API\PedidosAPIController.cs" />
     <Compile Include="Controllers\ProductosAdminController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Models\Binders\CarritoCompraModelBinder.cs" />
     <Compile Include="Models\Factura.cs">
       <DependentUpon>ModeloTiendaWeb.tt</DependentUpon>
@@ -286,8 +288,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -316,6 +316,9 @@
     <Content Include="Views\ProductosAdmin\Details.cshtml" />
     <Content Include="Views\ProductosAdmin\Edit.cshtml" />
     <Content Include="Views\ProductosAdmin\Index.cshtml" />
+    <Content Include="Views\Stocks\Delete.cshtml" />
+    <Content Include="Views\Stocks\Index.cshtml" />
+    <Content Include="Views\Facturas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

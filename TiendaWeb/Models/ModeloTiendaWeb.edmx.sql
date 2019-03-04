@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/01/2019 10:42:44
+-- Date Created: 03/04/2019 17:28:26
 -- Generated from EDMX file: D:\Proyectos Master\Proyectos_NET\TiendaWeb\TiendaWeb\Models\ModeloTiendaWeb.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [TiendaDB];
+USE [TiendaWebDB];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,25 +17,31 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ProductoPedido]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pedidos] DROP CONSTRAINT [FK_ProductoPedido];
+GO
 IF OBJECT_ID(N'[dbo].[FK_PedidoFactura]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pedidos] DROP CONSTRAINT [FK_PedidoFactura];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ProductoPedido]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Pedidos] DROP CONSTRAINT [FK_ProductoPedido];
+IF OBJECT_ID(N'[dbo].[FK_ProductoStock]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stock] DROP CONSTRAINT [FK_ProductoStock];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Facturas]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Facturas];
+IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Productos];
 GO
 IF OBJECT_ID(N'[dbo].[Pedidos]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Pedidos];
 GO
-IF OBJECT_ID(N'[dbo].[Productos]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Productos];
+IF OBJECT_ID(N'[dbo].[Facturas]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Facturas];
+GO
+IF OBJECT_ID(N'[dbo].[Stock]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Stock];
 GO
 
 -- --------------------------------------------------
